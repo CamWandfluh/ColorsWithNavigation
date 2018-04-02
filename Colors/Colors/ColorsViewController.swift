@@ -46,6 +46,13 @@ class ColorsViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ColorDetailViewController,
+        let row = colorTableView.indexPathForSelectedRow?.row {
+            destination.color = cellBackgroundColors[row]
+            destination.name = colors[row]
+        }
+    }
 }
 
 
